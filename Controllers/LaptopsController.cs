@@ -95,24 +95,8 @@ namespace MVCAssessment.Controllers
             return View(model);
         }
 
-        public IActionResult FilterLaptops(int minYear, int maxYear, int minPrice, int maxPrice)
+        public IActionResult FilterLaptops(int minYear, int maxYear, int minPrice, int maxPrice) 
         {
-            int currentYear = DateTime.Now.Year;
-            if (minYear < 2000 || minYear > currentYear)
-            {
-                minYear = 2000;
-            }
-
-            if (maxYear < minYear || maxYear > currentYear)
-            {
-                maxYear = currentYear;
-            }
-
-            if (minPrice < 0)
-            {
-                minPrice = 0;
-            }
-
             List<Laptop> laptops = Context.Laptops
                 .Where(l => l.ReleaseDate.Year >= minYear && l.ReleaseDate.Year <= maxYear)
                 .Where(l => l.price >= minPrice && l.price <= maxPrice).ToList();
@@ -120,9 +104,10 @@ namespace MVCAssessment.Controllers
             return View(laptops);
         }
 
-        public IActionResult BrandsIndex()
+        public IActionResult ListBrands()
         {
-            return View(Context.Brands);
+  
+                return View(Context.Brands);
         }
 
         [HttpGet]
