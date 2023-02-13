@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MVCAssessment.Models.Laptop>
+
+<h1>Laptops</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Laptop laptop in Model)
+        {
+                <tr>
+                    <td>@laptop.ModelName</td>
+                    <td>$@laptop.price</td>
+                </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,50 @@
+﻿@model MVCAssessment.Models.ViewModels.CompareLaptopsViewModel
+
+@{
+    ViewData["Title"] = "CompareLaptops";
+}
+
+<h1>CompareLaptops</h1>
+
+@if(Model != null && Model.LaptopLists != null)
+{
+    <form method="post">
+        <div class="form-group">
+            <label for="laptop1id">Laptop 1:</label>
+            <select id="laptop1id" name="laptop1id" class="form-control">
+                <option value="">Select a Laptop</option>
+                @foreach (SelectListItem laptop in Model.LaptopLists)
+                {
+                    <option value="@laptop.Value">@laptop.Text</option>
+                }
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="laptop2id">Laptop 2:</label>
+            <select id="laptop2id" name="laptop2id" class="form-control">
+                <option value="">Select a Laptop</option>
+                @foreach (SelectListItem laptop in Model.LaptopLists)
+                {
+                    <option value="@laptop.Value">@laptop.Text</option>
+                }
+
+            </select>
+        </div>
+        <input type="submit" value="Compare Movies" class="btn btn-primary" />
+    </form>
+
+}
+
+@if (Model.laptop1 != null && Model.laptop2 != null)
+{
+    <h3>Laptop 1: @Model.laptop1.ModelName</h3>
+    <p>Price: $@Model.laptop1.price</p>
+    <p>Release Date: @Model.laptop1.ReleaseDate</p>
+    <p>Stock: @Model.laptop1.Quantity in stock</p>
+
+    <h3>Movie 2: @Model.laptop2.ModelName</h3>
+    <p>Price: $@Model.laptop2.price</p>
+    <p>Release Date: @Model.laptop2.ReleaseDate</p>
+    <p>Stock: @Model.laptop2.Quantity in stock</p>
+}
